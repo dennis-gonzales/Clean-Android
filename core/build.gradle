@@ -3,7 +3,13 @@ plugins {
     id 'org.jetbrains.kotlin.jvm'
 }
 
+dependencies {
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+}
+
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    // Project uses Java 17 to compile project's source files
+    sourceCompatibility JavaVersion.VERSION_17
+    // Project's compiled bytecode is compatible to Java 17
+    targetCompatibility JavaVersion.VERSION_17
 }

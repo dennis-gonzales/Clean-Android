@@ -29,11 +29,14 @@ android {
         viewBinding true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        // Project uses Java 17 to compile project's source files
+        sourceCompatibility JavaVersion.VERSION_17
+        // Project's compiled bytecode is compatible to Java 17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        //  Kotlin code is compiled to be compatible with JVM 17
+        jvmTarget = '17'
     }
 }
 
@@ -58,7 +61,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
 
     implementation "com.google.android.material:material:1.9.0"
 
