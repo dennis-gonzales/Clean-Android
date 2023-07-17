@@ -1,6 +1,5 @@
 package com.dnnsgnzls.modern.presentation.note
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.dnnsgnzls.modern.R
 import com.dnnsgnzls.modern.databinding.FragmentListBinding
+import com.dnnsgnzls.modern.framework.NoteViewModel
 
 class ListFragment : Fragment() {
     private val viewModel by viewModels<NoteViewModel>()

@@ -1,7 +1,11 @@
+package com.dnnsgnzls.modern.framework.persistence
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.dnnsgnzls.modern.framework.persistence.dao.NoteDao
+import com.dnnsgnzls.modern.framework.persistence.entity.NoteEntity
 
 @Database(
     entities = [NoteEntity::class],

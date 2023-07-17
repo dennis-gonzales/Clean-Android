@@ -1,3 +1,5 @@
+package com.dnnsgnzls.modern.framework.persistence.entity
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
