@@ -27,8 +27,8 @@ class NoteRepository(
         }
     }
 
-    suspend fun delete(noteId: Long): Boolean {
-        dataSource.delete(noteId)
+    suspend fun delete(note: Note): Boolean {
+        dataSource.delete(note)
         return true
     }
 }

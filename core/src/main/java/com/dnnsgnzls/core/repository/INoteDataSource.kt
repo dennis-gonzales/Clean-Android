@@ -9,5 +9,5 @@ interface INoteDataSource {
 
     suspend fun getAll(): List<Note>
 
-    suspend fun delete(noteId: Long): Boolean
+    suspend fun delete(note: Note): Boolean
 }
