@@ -42,4 +42,10 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
             useCases.insertNote(note)
         }
     }
+
+    fun deleteNote(note: Note) {
+        viewModelScope.launch {
+            useCases.deleteNote(note)
+        }
+    }
 }
