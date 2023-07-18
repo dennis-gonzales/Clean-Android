@@ -62,8 +62,11 @@ class ListFragment : Fragment(), INoteClick {
     private fun observeViewModels() {
         viewModel.noteList.observe(viewLifecycleOwner) { noteList ->
             noteAdapter.updateList(noteList)
-            binding.recyclerView.alpha = 1F
             binding.progressBar.visibility = View.GONE
+            binding.recyclerView.apply {
+                alpha = 1F
+                scrollToPosition(0)
+            }
         }
     }
 
