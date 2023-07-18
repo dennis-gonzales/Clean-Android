@@ -13,6 +13,7 @@ import com.dnnsgnzls.core.usecase.GetNote
 import com.dnnsgnzls.core.usecase.InsertNote
 import com.dnnsgnzls.modern.framework.RoomNoteDataSource
 import com.dnnsgnzls.modern.framework.UseCases
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {

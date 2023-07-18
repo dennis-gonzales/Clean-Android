@@ -16,6 +16,7 @@ import com.dnnsgnzls.modern.framework.UseCases
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -42,6 +43,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
 
     fun getAllNotes() {
         viewModelScope.launch {
+            delay(250) // simulate network delay
             _noteList.value = useCases.getAllNotes()
         }
     }

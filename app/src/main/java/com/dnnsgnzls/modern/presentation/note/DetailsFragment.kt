@@ -14,6 +14,7 @@ import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.modern.databinding.FragmentDetailsBinding
 import com.dnnsgnzls.modern.framework.viewmodels.NoteViewModel
 
+private const val NEW_NOTE_ID = 0L
 
 class DetailsFragment : Fragment() {
     private val viewModel by viewModels<NoteViewModel>()
@@ -24,13 +25,18 @@ class DetailsFragment : Fragment() {
     private val binding
         get() = _binding!!
 
+    private var noteId = NEW_NOTE_ID
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val args by navArgs<DetailsFragmentArgs>()
-        val noteId = args.noteId
+        val existingNoteId = args.noteId
 
-        viewModel.getNote(noteId)
+        if (existingNoteId != NEW_NOTE_ID) {
+            this.noteId = existingNoteId
+            viewModel.getNote(existingNoteId)
+        }
     }
 
     override fun onCreateView(
@@ -67,7 +73,8 @@ class DetailsFragment : Fragment() {
                     title = binding.titleEditText.text.toString(),
                     content = binding.contentMultiLineText.text.toString(),
                     creationDate = time,
-                    updateTime = 0L
+                    updateTime = time,
+                    id = noteId
                 )
             )
             navController.popBackStack()

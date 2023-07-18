@@ -23,6 +23,7 @@
         tools:layout="@layout/fragment_details">
         <argument
             android:name="noteId"
+            android:defaultValue="0L"
             app:argType="long" />
     </fragment>
 </navigation>
