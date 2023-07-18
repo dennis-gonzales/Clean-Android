@@ -45,4 +45,9 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
             _noteList.value = useCases.getAllNotes()
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
 }
