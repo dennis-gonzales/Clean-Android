@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
 
         setContentView(view)
+        // https://developer.android.com/guide/fragments/appbar?hl=en#activity
         setSupportActionBar(binding.mainToolbar)
     }
 

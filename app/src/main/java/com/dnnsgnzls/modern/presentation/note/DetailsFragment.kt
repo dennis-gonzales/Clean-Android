@@ -98,6 +98,13 @@ class DetailsFragment : Fragment(), MenuProvider {
         }
     }
 
+    override fun onPrepareMenu(menu: Menu) {
+        super.onPrepareMenu(menu)
+
+        val item = menu.findItem(R.id.delete_note_menu)
+        item.isVisible = (noteId != NEW_NOTE_ID)
+    }
+
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.menu_note, menu)
     }
@@ -105,6 +112,10 @@ class DetailsFragment : Fragment(), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.delete_note_menu -> {
+                if (noteId == NEW_NOTE_ID) {
+                    return false
+                }
+
                 editingNote?.let {
                     viewModel.deleteNote(it)
                     navController.popBackStack()
