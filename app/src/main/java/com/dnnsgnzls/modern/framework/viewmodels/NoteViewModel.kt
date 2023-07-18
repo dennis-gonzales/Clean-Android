@@ -6,26 +6,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dnnsgnzls.core.data.Note
-import com.dnnsgnzls.core.repository.NoteRepository
-import com.dnnsgnzls.core.usecase.DeleteNote
-import com.dnnsgnzls.core.usecase.GetAllNotes
-import com.dnnsgnzls.core.usecase.GetNote
-import com.dnnsgnzls.core.usecase.InsertNote
-import com.dnnsgnzls.modern.framework.RoomNoteDataSource
 import com.dnnsgnzls.modern.framework.UseCases
-import kotlinx.coroutines.delay
+import com.dnnsgnzls.modern.framework.di.ApplicationModule
+import com.dnnsgnzls.modern.framework.di.DaggerViewModelComponent
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = NoteRepository(RoomNoteDataSource(application))
+    @Inject
+    lateinit var useCases: UseCases
 
-    private val useCases = UseCases(
-        InsertNote(repository),
-        GetNote(repository),
-        GetAllNotes(repository),
-        DeleteNote(repository)
-    )
+    init {
+        DaggerViewModelComponent.builder()
+            .applicationModule(ApplicationModule((getApplication())))
+            .build()
+            .inject(this)
+    }
 
     private val _note = MutableLiveData<Note>()
     val note: LiveData<Note>
