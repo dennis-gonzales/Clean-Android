@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.modern.R
 import com.dnnsgnzls.modern.databinding.FragmentListBinding
@@ -44,7 +45,10 @@ class ListFragment : Fragment(), INoteClick {
     }
 
     private fun initializeViews() {
+        binding.progressBar.visibility = View.VISIBLE
+
         binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
             adapter = noteAdapter
             setHasFixedSize(true)
         }
@@ -58,10 +62,16 @@ class ListFragment : Fragment(), INoteClick {
         viewModel.getAllNotes()
 
         viewModel.noteList.observe(viewLifecycleOwner) {noteList ->
-            Toast.makeText(requireContext(), "${noteList.size}", Toast.LENGTH_SHORT).show()
             noteAdapter.updateList(noteList)
+            binding.recyclerView.alpha = 1F
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.recyclerView.alpha = 0.7F
+        binding.progressBar.visibility = View.VISIBLE
     }
 
     override fun onClick(view: View, note: Note) {
