@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.modern.databinding.FragmentDetailsBinding
 import com.dnnsgnzls.modern.framework.viewmodels.NoteViewModel
@@ -22,6 +23,15 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding
         get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val args by navArgs<DetailsFragmentArgs>()
+        val noteId = args.noteId
+
+        viewModel.getNote(noteId)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,9 +75,9 @@ class DetailsFragment : Fragment() {
     }
 
     private fun observeViewModels() {
-//        viewModel.note.observe(viewLifecycleOwner) { note ->
-//            binding.titleEditText.setText(note.title)
-//            binding.contentMultiLineText.setText(note.content)
-//        }
+        viewModel.note.observe(viewLifecycleOwner) { note ->
+            binding.titleEditText.setText(note.title)
+            binding.contentMultiLineText.setText(note.content)
+        }
     }
 }

@@ -26,15 +26,19 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         DeleteNote(repository)
     )
 
-    private val _saved = MutableLiveData<Boolean>()
+    private val _note = MutableLiveData<Note>()
+    val note: LiveData<Note>
+        get() = _note
 
-    val saved: LiveData<Boolean>
-        get() = _saved
+    fun getNote(noteId: Long) {
+        viewModelScope.launch {
+            _note.value = useCases.getNote(noteId)
+        }
+    }
 
     fun saveNote(note: Note) {
         viewModelScope.launch {
             useCases.insertNote(note)
-            _saved.postValue(true)
         }
     }
 }

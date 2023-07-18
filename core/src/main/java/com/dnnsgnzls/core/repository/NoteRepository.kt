@@ -22,7 +22,7 @@ class NoteRepository(
     suspend fun getAll(): List<Note> {
         return withContext(dispatcher) {
             // Here, we're simulating a network operation
-            delay(500)  // Simulate network delay
+            delay(250)  // Simulate network delay
             dataSource.getAll()
         }
     }
