@@ -53,13 +53,14 @@ class ListFragment : Fragment(), INoteClick {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            val action = ListFragmentDirections.actionListFragmentToDetailsFragment()
+            val action = ListFragmentDirections
+                .actionListFragmentToDetailsFragment("Add New Note")
             navController.navigate(action)
         }
     }
 
     private fun observeViewModels() {
-        viewModel.noteList.observe(viewLifecycleOwner) {noteList ->
+        viewModel.noteList.observe(viewLifecycleOwner) { noteList ->
             noteAdapter.updateList(noteList)
             binding.recyclerView.alpha = 1F
             binding.progressBar.visibility = View.GONE
@@ -78,7 +79,8 @@ class ListFragment : Fragment(), INoteClick {
             return
         }
 
-        val action = ListFragmentDirections.actionListFragmentToDetailsFragment()
+        val action = ListFragmentDirections
+            .actionListFragmentToDetailsFragment("Editing ${note.title}")
         action.noteId = note.id
         navController.navigate(action)
     }
