@@ -92,6 +92,7 @@ class DetailsFragment : Fragment(), MenuProvider {
 
     private fun observeViewModels() {
         viewModel.note.observe(viewLifecycleOwner) { note ->
+//            .title = note.title
             editingNote = note
             binding.titleEditText.setText(note.title)
             binding.contentMultiLineText.setText(note.content)

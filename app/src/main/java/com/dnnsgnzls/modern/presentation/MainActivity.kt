@@ -16,7 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
+
         setContentView(view)
+        setSupportActionBar(binding.mainToolbar)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

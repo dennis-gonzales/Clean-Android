@@ -27,9 +27,10 @@
         android:contentDescription="@string/add_new_note"
         android:focusable="true"
         android:src="@drawable/ic_add_circle"
-        app:backgroundTint="@color/purple_200"
+        app:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
     <ProgressBar
         android:id="@+id/progressBar"
