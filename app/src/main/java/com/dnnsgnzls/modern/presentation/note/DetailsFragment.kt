@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -48,7 +49,7 @@ class DetailsFragment : Fragment(), MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -117,8 +118,17 @@ class DetailsFragment : Fragment(), MenuProvider {
                 }
 
                 editingNote?.let {
-                    viewModel.deleteNote(it)
-                    navController.popBackStack()
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Delete note")
+                        .setMessage("Are you sure you want to delete this note?")
+                        .setPositiveButton("Yes") { _, _ ->
+                            viewModel.deleteNote(it)
+                            navController.popBackStack()
+                        }
+                        .setNegativeButton("Cancel") { _, _ -> }
+                        .create()
+                        .show()
+
                     return true
                 }
             }
