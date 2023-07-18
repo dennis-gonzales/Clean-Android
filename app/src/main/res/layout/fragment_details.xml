@@ -45,7 +45,8 @@
         android:contentDescription="@string/save_note"
         android:focusable="true"
         android:src="@drawable/ic_save"
-        app:backgroundTint="@color/purple_200"
+        app:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@android:color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

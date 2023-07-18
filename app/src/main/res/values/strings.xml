@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Modern Android</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="add_new_note">Add new note</string>
-    <string name="save_note">Save note</string>
+
     <string name="title">Title</string>
     <string name="content">Content</string>
+
+    <string name="add_new_note">Add new note</string>
+    <string name="save_note">Save note</string>
+    <string name="delete_note">Delete note</string>
+
+    <!-- used in `<argument android:name="label"`  -->
+    <string name="note_toolbar_title">{label}</string>
 </resources>

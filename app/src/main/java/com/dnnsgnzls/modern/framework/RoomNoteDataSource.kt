@@ -1,8 +1,13 @@
+package com.dnnsgnzls.modern.framework
+
 import android.content.Context
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.core.repository.INoteDataSource
+import com.dnnsgnzls.modern.framework.db.DatabaseService
+import com.dnnsgnzls.modern.framework.db.dao.NoteDao
+import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
 
-abstract class RoomNoteDataSource(context: Context) : INoteDataSource {
+class RoomNoteDataSource(context: Context) : INoteDataSource {
 
     private val noteDao: NoteDao = DatabaseService(context).noteDao()
 

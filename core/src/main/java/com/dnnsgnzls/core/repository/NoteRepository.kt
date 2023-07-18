@@ -1,14 +1,9 @@
 package com.dnnsgnzls.core.repository
 
 import com.dnnsgnzls.core.data.Note
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.withContext
 
 class NoteRepository(
-    private val dataSource: INoteDataSource,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dataSource: INoteDataSource
 ) {
     suspend fun insert(note: Note): Boolean {
         dataSource.insert(note)
@@ -20,11 +15,7 @@ class NoteRepository(
     }
 
     suspend fun getAll(): List<Note> {
-        return withContext(dispatcher) {
-            // Here, we're simulating a network operation
-            delay(2000)  // Simulate network delay
-            dataSource.getAll()
-        }
+        return dataSource.getAll()
     }
 
     suspend fun delete(note: Note): Boolean {

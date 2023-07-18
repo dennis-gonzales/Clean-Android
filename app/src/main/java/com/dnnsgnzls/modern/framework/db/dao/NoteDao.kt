@@ -1,8 +1,12 @@
+package com.dnnsgnzls.modern.framework.db.dao
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
+
 
 @Dao
 interface NoteDao {
@@ -12,7 +16,7 @@ interface NoteDao {
     @Query("SELECT * FROM note WHERE id=:noteId")
     suspend fun getEntity(noteId: Long): NoteEntity?
 
-    @Query("SELECT * FROM note ORDER BY id DESC")
+    @Query("SELECT * FROM note ORDER BY update_time DESC")
     suspend fun getAllEntities(): List<NoteEntity>
 
     @Delete

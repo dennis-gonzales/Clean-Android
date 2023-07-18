@@ -15,13 +15,18 @@
             app:destination="@id/detailsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
-        <argument
-            android:name="noteId"
-            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.dnnsgnzls.modern.presentation.note.DetailsFragment"
-        android:label="Note Details"
-        tools:layout="@layout/fragment_details" />
+        android:label="@string/note_toolbar_title"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="noteId"
+            android:defaultValue="0L"
+            app:argType="long" />
+        <argument
+            android:name="label"
+            app:argType="string" />
+    </fragment>
 </navigation>
