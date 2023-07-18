@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern.framework
+package com.dnnsgnzls.modern.framework.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -11,9 +11,20 @@ import com.dnnsgnzls.core.usecase.DeleteNote
 import com.dnnsgnzls.core.usecase.GetAllNotes
 import com.dnnsgnzls.core.usecase.GetNote
 import com.dnnsgnzls.core.usecase.InsertNote
+import com.dnnsgnzls.modern.framework.RoomNoteDataSource
+import com.dnnsgnzls.modern.framework.UseCases
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class NoteViewModel(application: Application) : AndroidViewModel(application) {
+class ListViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
+
+    private val job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     private val repository = NoteRepository(RoomNoteDataSource(application))
 
@@ -24,16 +35,14 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         DeleteNote(repository)
     )
 
-    private val _saved = MutableLiveData<Boolean>()
+    private val _noteList = MutableLiveData<List<Note>>()
 
-    val saved: LiveData<Boolean>
-        get() = _saved
+    val noteList: LiveData<List<Note>>
+        get() = _noteList
 
-    fun saveNote(note: Note) {
+    fun getAllNotes() {
         viewModelScope.launch {
-            useCases.insertNote(note)
-            _saved.postValue(true)
+            _noteList.value = useCases.getAllNotes()
         }
     }
-
 }

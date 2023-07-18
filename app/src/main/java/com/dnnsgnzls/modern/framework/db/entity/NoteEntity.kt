@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern.framework.persistence.entity
+package com.dnnsgnzls.modern.framework.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

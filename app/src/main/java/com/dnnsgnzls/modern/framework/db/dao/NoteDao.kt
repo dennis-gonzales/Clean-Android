@@ -1,11 +1,11 @@
-package com.dnnsgnzls.modern.framework.persistence.dao
+package com.dnnsgnzls.modern.framework.db.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.dnnsgnzls.modern.framework.persistence.entity.NoteEntity
+import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
 
 
 @Dao

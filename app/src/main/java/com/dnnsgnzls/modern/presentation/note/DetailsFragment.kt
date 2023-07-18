@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.modern.databinding.FragmentDetailsBinding
-import com.dnnsgnzls.modern.framework.NoteViewModel
+import com.dnnsgnzls.modern.framework.viewmodels.NoteViewModel
 
 
 class DetailsFragment : Fragment() {
@@ -52,7 +52,14 @@ class DetailsFragment : Fragment() {
 
             val time = System.currentTimeMillis()
 
-            viewModel.saveNote(Note("Hello", "Hello World!", time, 0L))
+            viewModel.saveNote(
+                Note(
+                    title = binding.titleEditText.text.toString(),
+                    content = binding.contentMultiLineText.text.toString(),
+                    creationDate = time,
+                    updateTime = 0L
+                )
+            )
             navController.popBackStack()
         }
     }

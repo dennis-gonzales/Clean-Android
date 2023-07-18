@@ -3,9 +3,9 @@ package com.dnnsgnzls.modern.framework
 import android.content.Context
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.core.repository.INoteDataSource
-import com.dnnsgnzls.modern.framework.persistence.DatabaseService
-import com.dnnsgnzls.modern.framework.persistence.dao.NoteDao
-import com.dnnsgnzls.modern.framework.persistence.entity.NoteEntity
+import com.dnnsgnzls.modern.framework.db.DatabaseService
+import com.dnnsgnzls.modern.framework.db.dao.NoteDao
+import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
 
 class RoomNoteDataSource(context: Context) : INoteDataSource {
 
