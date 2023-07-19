@@ -34,14 +34,20 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
     }
 
     private val _noteList = MutableStateFlow<List<Note>>(emptyList())
+    private val _isLoading = MutableStateFlow(true)
 
     val noteList: StateFlow<List<Note>>
         get() = _noteList
+    val isLoading: StateFlow<Boolean>
+        get() = _isLoading
 
-    init {
+    fun getAllNotes() {
+        _isLoading.value = true
+
         viewModelScope.launch {
             useCases.getAllNotes().collect { noteList ->
                 _noteList.value = noteList
+                _isLoading.value = false
             }
         }
     }

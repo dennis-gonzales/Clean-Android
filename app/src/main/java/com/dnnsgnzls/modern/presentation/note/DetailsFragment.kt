@@ -96,8 +96,8 @@ class DetailsFragment : Fragment(), MenuProvider {
     }
 
     private fun observeViewModels() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.note.collect { note ->
                     if (note == null) return@collect
 

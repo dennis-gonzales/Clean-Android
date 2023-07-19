@@ -32,12 +32,6 @@ class ListFragment : Fragment(), INoteClick {
     private val binding
         get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        observeViewModels()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,14 +42,12 @@ class ListFragment : Fragment(), INoteClick {
         navController = findNavController()
 
         initializeViews()
+        observeViewModels()
 
         return view
     }
 
     private fun initializeViews() {
-        binding.progressBar.visibility = View.VISIBLE
-        binding.recyclerView.alpha = 0.7F
-
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = noteAdapter
@@ -70,17 +62,26 @@ class ListFragment : Fragment(), INoteClick {
     }
 
     private fun observeViewModels() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.noteList.collect { noteList ->
                     noteAdapter.updateList(noteList)
-                    binding.progressBar.visibility = View.GONE
-                    binding.recyclerView.alpha = 1F
                     delay(100)
                     binding.recyclerView.smoothScrollToPosition(0)
+
                 }
             }
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.isLoading.collect { isLoading ->
+                    binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+                    binding.recyclerView.alpha = if (isLoading) 0.7F else 1F
+                }
+            }
+        }
+
+        viewModel.getAllNotes()
     }
 
     override fun onClick(view: View, note: Note) {
