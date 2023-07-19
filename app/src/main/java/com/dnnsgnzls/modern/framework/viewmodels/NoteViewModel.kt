@@ -2,13 +2,13 @@ package com.dnnsgnzls.modern.framework.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.modern.framework.UseCases
 import com.dnnsgnzls.modern.framework.di.ApplicationModule
 import com.dnnsgnzls.modern.framework.di.DaggerViewModelComponent
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,13 +24,15 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
             .inject(this)
     }
 
-    private val _note = MutableLiveData<Note>()
-    val note: LiveData<Note>
+    private val _note = MutableStateFlow<Note?>(null)
+    val note: StateFlow<Note?>
         get() = _note
 
     fun getNote(noteId: Long) {
         viewModelScope.launch {
-            _note.value = useCases.getNote(noteId)
+          useCases.getNote(noteId).collect {note ->
+              _note.value = note
+          }
         }
     }
 

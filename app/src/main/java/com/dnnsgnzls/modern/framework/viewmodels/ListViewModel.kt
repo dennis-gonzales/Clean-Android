@@ -2,8 +2,6 @@ package com.dnnsgnzls.modern.framework.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.modern.framework.UseCases
@@ -12,7 +10,8 @@ import com.dnnsgnzls.modern.framework.di.DaggerViewModelComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -34,15 +33,16 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
             .inject(this)
     }
 
-    private val _noteList = MutableLiveData<List<Note>>()
+    private val _noteList = MutableStateFlow<List<Note>>(emptyList())
 
-    val noteList: LiveData<List<Note>>
+    val noteList: StateFlow<List<Note>>
         get() = _noteList
 
-    fun getAllNotes() {
+    init {
         viewModelScope.launch {
-            delay(250) // simulate network delay
-            _noteList.value = useCases.getAllNotes()
+            useCases.getAllNotes().collect { noteList ->
+                _noteList.value = noteList
+            }
         }
     }
 

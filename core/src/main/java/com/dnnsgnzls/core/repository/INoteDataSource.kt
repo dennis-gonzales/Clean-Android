@@ -1,13 +1,14 @@
 package com.dnnsgnzls.core.repository
 
 import com.dnnsgnzls.core.data.Note
+import kotlinx.coroutines.flow.Flow
 
 interface INoteDataSource {
     suspend fun insert(note: Note): Boolean
 
-    suspend fun get(noteId: Long): Note?
+    fun get(noteId: Long): Flow<Note?>
 
-    suspend fun getAll(): List<Note>
+    fun getAll(): Flow<List<Note>>
 
     suspend fun delete(note: Note): Boolean
 }

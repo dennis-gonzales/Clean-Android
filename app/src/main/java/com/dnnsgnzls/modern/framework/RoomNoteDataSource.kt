@@ -6,6 +6,8 @@ import com.dnnsgnzls.core.repository.INoteDataSource
 import com.dnnsgnzls.modern.framework.db.DatabaseService
 import com.dnnsgnzls.modern.framework.db.dao.NoteDao
 import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class RoomNoteDataSource(context: Context) : INoteDataSource {
 
@@ -16,12 +18,14 @@ class RoomNoteDataSource(context: Context) : INoteDataSource {
         return true
     }
 
-    override suspend fun get(noteId: Long): Note? {
-        return noteDao.getEntity(noteId)?.toNote()
+    override fun get(noteId: Long): Flow<Note?> {
+        return noteDao.getEntity(noteId).map { it?.toNote() }
     }
 
-    override suspend fun getAll(): List<Note> {
-        return noteDao.getAllEntities().map { it.toNote() }
+    override fun getAll(): Flow<List<Note>> {
+        return noteDao.getAllEntities().map { flowableListNote ->
+            flowableListNote.map { it.toNote() }
+        }
     }
 
     override suspend fun delete(note: Note): Boolean {

@@ -13,9 +13,8 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
 class NoteAdapter(
-    private val noteList: ArrayList<Note>,
+    private var noteList: List<Note>,
     private val clickListener: INoteClick,
     private val scope: CoroutineScope
 ) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
@@ -56,8 +55,7 @@ class NoteAdapter(
             }
 
             withContext(Dispatchers.Main) {
-                noteList.clear()
-                noteList.addAll(newNoteList)
+                noteList = newNoteList
                 diffResult.dispatchUpdatesTo(this@NoteAdapter)
             }
         }

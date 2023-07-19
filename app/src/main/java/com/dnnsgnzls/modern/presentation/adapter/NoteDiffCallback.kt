@@ -14,11 +14,15 @@ class NoteDiffCallback(
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         // Checks if two items represent the same entity or object, typically by comparing their unique IDs.
-        return oldList[oldItemPosition].id == newList[newItemPosition].id
+        val oldNote = oldList[oldItemPosition]
+        val newNote = newList[newItemPosition]
+        return oldNote.id == newNote.id
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         // Checks if the data of two items is the same, i.e., whether the contents of an item have changed.
-        return oldList[oldItemPosition] == newList[newItemPosition]
+        val oldNote = oldList[oldItemPosition]
+        val newNote = newList[newItemPosition]
+        return oldNote == newNote
     }
 }

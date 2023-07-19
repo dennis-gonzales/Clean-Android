@@ -1,6 +1,7 @@
 package com.dnnsgnzls.core.repository
 
 import com.dnnsgnzls.core.data.Note
+import kotlinx.coroutines.flow.Flow
 
 class NoteRepository(
     private val dataSource: INoteDataSource
@@ -10,11 +11,11 @@ class NoteRepository(
         return true
     }
 
-    suspend fun get(noteId: Long): Note? {
+    fun get(noteId: Long): Flow<Note?> {
         return dataSource.get(noteId)
     }
 
-    suspend fun getAll(): List<Note> {
+    fun getAll(): Flow<List<Note>> {
         return dataSource.getAll()
     }
 

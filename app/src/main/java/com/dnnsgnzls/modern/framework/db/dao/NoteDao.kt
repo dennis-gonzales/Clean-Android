@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
+import kotlinx.coroutines.flow.Flow
 
 
 @Dao
@@ -14,10 +15,10 @@ interface NoteDao {
     suspend fun insertEntity(noteEntity: NoteEntity)
 
     @Query("SELECT * FROM note WHERE id=:noteId")
-    suspend fun getEntity(noteId: Long): NoteEntity?
+    fun getEntity(noteId: Long): Flow<NoteEntity?>
 
     @Query("SELECT * FROM note ORDER BY update_time DESC")
-    suspend fun getAllEntities(): List<NoteEntity>
+    fun getAllEntities(): Flow<List<NoteEntity>>
 
     @Delete
     suspend fun deleteEntity(noteEntity: NoteEntity)
