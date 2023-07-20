@@ -10,4 +10,5 @@
 
     <!-- used in `<argument android:name="label"`  -->
     <string name="note_toolbar_title">{label}</string>
+    <string name="notes_is_empty">Your notes is empty…</string>
 </resources>

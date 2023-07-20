@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -13,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dnnsgnzls.core.data.Note
+import com.dnnsgnzls.modern.R
 import com.dnnsgnzls.modern.databinding.FragmentListBinding
 import com.dnnsgnzls.modern.framework.viewmodels.ListViewModel
 import com.dnnsgnzls.modern.presentation.adapter.INoteClick
@@ -52,6 +54,12 @@ class ListFragment : Fragment(), INoteClick {
             layoutManager = LinearLayoutManager(context)
             adapter = noteAdapter
             setHasFixedSize(true)
+
+            val animation = AnimationUtils.loadLayoutAnimation(
+                context,
+                R.anim.layout_animation_fall_down
+            )
+            layoutAnimation = animation
         }
 
         binding.floatingActionButton.setOnClickListener {
@@ -66,9 +74,14 @@ class ListFragment : Fragment(), INoteClick {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.noteList.collect { noteList ->
                     noteAdapter.updateList(noteList)
-                    delay(100)
-                    binding.recyclerView.smoothScrollToPosition(0)
 
+                    if (noteList.isEmpty()) {
+                        binding.emptyNoteTv.visibility = View.VISIBLE
+                    } else {
+                        binding.emptyNoteTv.visibility = View.GONE
+                        delay(100)
+                        binding.recyclerView.smoothScrollToPosition(0)
+                    }
                 }
             }
         }
