@@ -1,0 +1,15 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+}
+
+java {
+    // Project uses Java 17 to compile project's source files
+    sourceCompatibility JavaVersion.VERSION_17
+    // Project's compiled bytecode is compatible to Java 17
+    targetCompatibility JavaVersion.VERSION_17
+}

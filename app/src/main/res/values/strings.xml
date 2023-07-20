@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Modern Android</string>
+
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+
+    <string name="add_new_note">Add new note</string>
+    <string name="save_note">Save note</string>
+    <string name="delete_note">Delete note</string>
+
+    <!-- used in `<argument android:name="label"`  -->
+    <string name="note_toolbar_title">{label}</string>
+    <string name="notes_is_empty">Your notes is empty…</string>
 </resources>
