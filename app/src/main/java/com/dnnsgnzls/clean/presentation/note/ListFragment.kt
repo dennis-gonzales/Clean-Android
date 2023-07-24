@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern.presentation.note
+package com.dnnsgnzls.clean.presentation.note
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,11 +14,11 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dnnsgnzls.core.data.Note
-import com.dnnsgnzls.modern.R
-import com.dnnsgnzls.modern.databinding.FragmentListBinding
-import com.dnnsgnzls.modern.framework.viewmodels.ListViewModel
-import com.dnnsgnzls.modern.presentation.adapter.INoteClick
-import com.dnnsgnzls.modern.presentation.adapter.NoteAdapter
+import com.dnnsgnzls.clean.R
+import com.dnnsgnzls.clean.databinding.FragmentListBinding
+import com.dnnsgnzls.clean.framework.viewmodels.ListViewModel
+import com.dnnsgnzls.clean.presentation.adapter.INoteClick
+import com.dnnsgnzls.clean.presentation.adapter.NoteAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

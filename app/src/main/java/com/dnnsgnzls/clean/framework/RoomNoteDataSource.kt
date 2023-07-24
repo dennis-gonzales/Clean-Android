@@ -1,11 +1,11 @@
-package com.dnnsgnzls.modern.framework
+package com.dnnsgnzls.clean.framework
 
 import android.content.Context
 import com.dnnsgnzls.core.data.Note
 import com.dnnsgnzls.core.repository.INoteDataSource
-import com.dnnsgnzls.modern.framework.db.DatabaseService
-import com.dnnsgnzls.modern.framework.db.dao.NoteDao
-import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
+import com.dnnsgnzls.clean.framework.db.DatabaseService
+import com.dnnsgnzls.clean.framework.db.dao.NoteDao
+import com.dnnsgnzls.clean.framework.db.entity.NoteEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

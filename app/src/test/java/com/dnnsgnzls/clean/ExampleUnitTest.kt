@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern
+package com.dnnsgnzls.clean
 
 import org.junit.Test
 

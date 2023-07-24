@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern.framework
+package com.dnnsgnzls.clean.framework
 
 import com.dnnsgnzls.core.usecase.DeleteNote
 import com.dnnsgnzls.core.usecase.GetAllNotes

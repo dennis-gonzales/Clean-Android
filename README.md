@@ -1,4 +1,4 @@
-# Modern Android
+# Clean Android
 
 The application has been designed following Clean Architecture, SOLID Principles, and modern Android best practices. It uses technologies such as Room, Kotlin Coroutines, LiveData, DiffUtil, View Binding, and the Android Navigation Component.
 

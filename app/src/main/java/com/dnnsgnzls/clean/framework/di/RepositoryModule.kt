@@ -1,8 +1,8 @@
-package com.dnnsgnzls.modern.framework.di
+package com.dnnsgnzls.clean.framework.di
 
 import android.app.Application
 import com.dnnsgnzls.core.repository.NoteRepository
-import com.dnnsgnzls.modern.framework.RoomNoteDataSource
+import com.dnnsgnzls.clean.framework.RoomNoteDataSource
 import dagger.Module
 import dagger.Provides
 

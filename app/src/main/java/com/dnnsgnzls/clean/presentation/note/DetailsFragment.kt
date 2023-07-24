@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern.presentation.note
+package com.dnnsgnzls.clean.presentation.note
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,9 +19,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dnnsgnzls.core.data.Note
-import com.dnnsgnzls.modern.R
-import com.dnnsgnzls.modern.databinding.FragmentDetailsBinding
-import com.dnnsgnzls.modern.framework.viewmodels.NoteViewModel
+import com.dnnsgnzls.clean.R
+import com.dnnsgnzls.clean.databinding.FragmentDetailsBinding
+import com.dnnsgnzls.clean.framework.viewmodels.NoteViewModel
 import kotlinx.coroutines.launch
 
 private const val NEW_NOTE_ID = 0L

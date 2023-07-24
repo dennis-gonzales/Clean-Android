@@ -1,11 +1,11 @@
-package com.dnnsgnzls.modern.presentation.adapter
+package com.dnnsgnzls.clean.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dnnsgnzls.core.data.Note
-import com.dnnsgnzls.modern.databinding.NoteItemBinding
+import com.dnnsgnzls.clean.databinding.NoteItemBinding
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

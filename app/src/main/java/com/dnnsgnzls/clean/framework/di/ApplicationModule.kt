@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern.framework.di
+package com.dnnsgnzls.clean.framework.di
 
 import android.app.Application
 import dagger.Module

@@ -1,12 +1,12 @@
-package com.dnnsgnzls.modern.presentation
+package com.dnnsgnzls.clean.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.dnnsgnzls.modern.R
-import com.dnnsgnzls.modern.databinding.ActivityMainBinding
+import com.dnnsgnzls.clean.R
+import com.dnnsgnzls.clean.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController

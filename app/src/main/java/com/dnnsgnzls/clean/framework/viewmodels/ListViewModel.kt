@@ -1,12 +1,12 @@
-package com.dnnsgnzls.modern.framework.viewmodels
+package com.dnnsgnzls.clean.framework.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.dnnsgnzls.core.data.Note
-import com.dnnsgnzls.modern.framework.UseCases
-import com.dnnsgnzls.modern.framework.di.ApplicationModule
-import com.dnnsgnzls.modern.framework.di.DaggerViewModelComponent
+import com.dnnsgnzls.clean.framework.UseCases
+import com.dnnsgnzls.clean.framework.di.ApplicationModule
+import com.dnnsgnzls.clean.framework.di.DaggerViewModelComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

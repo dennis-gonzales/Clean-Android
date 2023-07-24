@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Modern Android"
+rootProject.name = "Clean Android"
 include ':app'
 include ':core'

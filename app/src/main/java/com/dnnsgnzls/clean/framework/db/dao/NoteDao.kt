@@ -1,11 +1,11 @@
-package com.dnnsgnzls.modern.framework.db.dao
+package com.dnnsgnzls.clean.framework.db.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
+import com.dnnsgnzls.clean.framework.db.entity.NoteEntity
 import kotlinx.coroutines.flow.Flow
 
 

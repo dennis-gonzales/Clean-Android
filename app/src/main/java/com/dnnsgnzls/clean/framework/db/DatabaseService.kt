@@ -1,11 +1,11 @@
-package com.dnnsgnzls.modern.framework.db
+package com.dnnsgnzls.clean.framework.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dnnsgnzls.modern.framework.db.dao.NoteDao
-import com.dnnsgnzls.modern.framework.db.entity.NoteEntity
+import com.dnnsgnzls.clean.framework.db.dao.NoteDao
+import com.dnnsgnzls.clean.framework.db.entity.NoteEntity
 
 @Database(
     entities = [NoteEntity::class],

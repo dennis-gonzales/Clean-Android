@@ -1,7 +1,7 @@
-package com.dnnsgnzls.modern.framework.di
+package com.dnnsgnzls.clean.framework.di
 
-import com.dnnsgnzls.modern.framework.viewmodels.ListViewModel
-import com.dnnsgnzls.modern.framework.viewmodels.NoteViewModel
+import com.dnnsgnzls.clean.framework.viewmodels.ListViewModel
+import com.dnnsgnzls.clean.framework.viewmodels.NoteViewModel
 import dagger.Component
 
 @Component(modules = [ApplicationModule::class, RepositoryModule::class, UseCasesModule::class])

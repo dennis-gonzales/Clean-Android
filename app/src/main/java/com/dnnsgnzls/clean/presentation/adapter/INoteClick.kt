@@ -1,4 +1,4 @@
-package com.dnnsgnzls.modern.presentation.adapter
+package com.dnnsgnzls.clean.presentation.adapter
 
 import android.view.View
 import com.dnnsgnzls.core.data.Note

@@ -1,11 +1,11 @@
-package com.dnnsgnzls.modern.framework.di
+package com.dnnsgnzls.clean.framework.di
 
 import com.dnnsgnzls.core.repository.NoteRepository
 import com.dnnsgnzls.core.usecase.DeleteNote
 import com.dnnsgnzls.core.usecase.GetAllNotes
 import com.dnnsgnzls.core.usecase.GetNote
 import com.dnnsgnzls.core.usecase.InsertNote
-import com.dnnsgnzls.modern.framework.UseCases
+import com.dnnsgnzls.clean.framework.UseCases
 import dagger.Module
 import dagger.Provides
 
