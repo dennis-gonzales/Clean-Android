@@ -20,7 +20,7 @@ abstract class DatabaseService : RoomDatabase() {
         @Volatile
         private var instance: DatabaseService? = null
 
-        private const val DATABASE_NAME = "note-db";
+        private const val DATABASE_NAME = "note-db"
 
         operator fun invoke(context: Context): DatabaseService = instance ?: synchronized(this) {
             instance ?: buildDatabase(context).also { instance = it }
